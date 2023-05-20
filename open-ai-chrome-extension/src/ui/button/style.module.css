@@ -1,0 +1,22 @@
+.primary {
+    color: #fff;
+    text-transform: none;
+    background-color: #b667f1;
+    border-style: none;
+    padding: 0.75em 1.5em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    border-radius: 2.25rem;
+    line-height: 1.25;
+    transition: transform 0.2s ease;
+}
+
+.primary:hover {
+    background-color: #a25be3;
+    transform: translateY(-2px);
+}
+
+.primary.active {
+    background-color: #86d299;
+}

@@ -28,7 +28,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./open-ai-chrome-extension:/app
-      - /app/node_modules
     ports:
       - '3000:3000'
 

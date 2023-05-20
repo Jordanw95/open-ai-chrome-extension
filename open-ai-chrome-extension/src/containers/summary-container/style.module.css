@@ -1,0 +1,12 @@
+.main-page{
+    display: grid;
+    grid-template-rows: minmax(100px, auto) 1fr;
+    background-color: #2f363d;
+    height: 100vh;
+}
+
+.top-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

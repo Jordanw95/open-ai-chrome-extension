@@ -10,6 +10,7 @@
     "@types/node": "^16.18.31",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
+    "classnames": "^2.3.2",
     "npm-watch": "^0.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -53,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@types/chrome": "^0.0.236",
     "prettier": "^2.8.8"
   }
 }
