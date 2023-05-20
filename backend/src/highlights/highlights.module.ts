@@ -7,8 +7,8 @@ import { Highlight, HighlightSchema } from './schemas/highlights.schema';
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name: Highlight.name, schema: HighlightSchema}
-    ])
+      { name: Highlight.name, schema: HighlightSchema },
+    ]),
   ],
   controllers: [HighlightsController],
   providers: [HighlightsService],

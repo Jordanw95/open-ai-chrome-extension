@@ -1,26 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {  useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    exampleRequest();
+  }, []);
 
-  // useEffect(() => {
-  //   exampleRequest()
-  // }, [])
-
-  // const exampleRequest = async () => {
-  //   const response = await fetch('http://localhost:3002/highlights');
-  //   console.log(response)
-  //   const body = await response.json();
-  //   console.log(body);
-  // }
+  const exampleRequest = async () => {
+    const response = await fetch('http://localhost:3002/highlights');
+    console.log(response);
+    const body = await response.json();
+    console.log(body);
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Editaaaa <code>src/App.tsx</code> and save to reload.
+          Edita <code>src/App.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"

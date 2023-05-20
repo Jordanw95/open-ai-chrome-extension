@@ -7,6 +7,10 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
+  app.enableCors({
+    origin: 'chrome-extension://ifoeiofgplohnkldjcnihjoehfbbpjfo',
+  });
+
   await app.listen(process.env.APP_PORT);
 }
 bootstrap();
