@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    env_file:
+      - .env
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+  api: 
+    container_name: nest-js-api
+    build: ./backend
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    command: npm run start:dev
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+  frontend:
+    build:
+      context: ./open-ai-chrome-extension
+      dockerfile: Dockerfile
+    volumes:
+      - ./open-ai-chrome-extension:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+
+volumes:
+  mongodb_data_container:
