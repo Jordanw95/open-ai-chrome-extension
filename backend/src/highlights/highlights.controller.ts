@@ -1,15 +1,6 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { HighlightsService } from './highlights.service';
 import { CreateHighlightDto } from './dto/create-highlight.dto';
-import { UpdateHighlightDto } from './dto/update-highlight.dto';
 
 @Controller('highlights')
 export class HighlightsController {
@@ -18,28 +9,5 @@ export class HighlightsController {
   @Post()
   async create(@Body() createHighlightDto: CreateHighlightDto) {
     return await this.highlightsService.create(createHighlightDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.highlightsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.highlightsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateHighlightDto: UpdateHighlightDto,
-  ) {
-    return this.highlightsService.update(+id, updateHighlightDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.highlightsService.remove(+id);
   }
 }
