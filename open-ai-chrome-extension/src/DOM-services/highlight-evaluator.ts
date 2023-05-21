@@ -9,7 +9,6 @@ const messagesFromReactAppListener = (
    msg: DOMMessage) => {
     if (msg.type === 'TOGGLE_SUMMARY_ENABLED'){
         summaryEnabled = msg.summaryEnabled;
-        console.log('summaryEnabled', summaryEnabled)
     }
 }
  
@@ -29,7 +28,6 @@ document.addEventListener('mouseup', async () => {
             },
             body: JSON.stringify({ content: selectedText })
         })
-        window.alert('Your selection has been summarised.');
     }
 });
 

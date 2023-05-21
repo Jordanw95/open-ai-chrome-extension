@@ -10,11 +10,14 @@ describe('SummariesController', () => {
 
   beforeEach(async () => {
     summaryModel = {
-      find: jest.fn(),
+      find: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnThis(),
+      exec: jest.fn().mockResolvedValue({ _id: '1', name: 'Test summary' }),
       save: jest.fn(),
     } as any;
 
     const module: TestingModule = await Test.createTestingModule({
+      controllers: [SummariesController],
       providers: [
         SummariesService,
         {
@@ -29,5 +32,15 @@ describe('SummariesController', () => {
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
+  });
+
+  it('should return all summaries', async () => {
+    const testSummaries = [{ _id: '1', name: 'Test summary' }];
+    summaryModel.exec.mockResolvedValue(testSummaries);
+
+    expect(await controller.findAll()).toEqual(testSummaries);
+    expect(summaryModel.find).toHaveBeenCalled();
+    expect(summaryModel.sort).toHaveBeenCalledWith({ created_at: -1 });
+    expect(summaryModel.exec).toHaveBeenCalled();
   });
 });
