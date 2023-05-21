@@ -10,6 +10,16 @@ Follow the instructions below to set up and run the application for local develo
 
 - Docker: The application uses Docker to build and run the services. Please ensure Docker is installed on your system.
 - Chrome Browser: As this is a Chrome extension, you'll need the Chrome browser installed.
+- To run the containers locally, you will need to provide a `.env` file in the root directory, with the following
+fields
+
+```
+    APP_PORT=3002
+    MONGODB_URL=mongodb://mongodb:27017/open-ai-chrome-extension
+    HOST=0.0.0.0
+    OPENAI_ORGANISATION_ID='your open ai organisation key'
+    OPENAI_API_KEY='your open ai api key'
+```
 
 ### Steps to Run the Application
 
