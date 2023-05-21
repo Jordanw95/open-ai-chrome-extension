@@ -14,7 +14,6 @@ services:
     build: ./backend
     volumes:
       - ./backend:/app
-      - /app/node_modules
     ports:
       - ${APP_PORT}:${APP_PORT}
     command: npm run start:dev

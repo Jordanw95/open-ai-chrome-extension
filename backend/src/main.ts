@@ -7,9 +7,10 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
-  app.enableCors({
-    origin: 'chrome-extension://ifoeiofgplohnkldjcnihjoehfbbpjfo',
-  });
+  // For now we will allow all origins as requests are sent from content
+  // script injected in the page and not from the extension itself.
+  // Should eventually be changed to only allow requests from the extension.
+  app.enableCors();
 
   await app.listen(process.env.APP_PORT);
 }

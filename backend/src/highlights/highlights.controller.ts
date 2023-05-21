@@ -16,8 +16,8 @@ export class HighlightsController {
   constructor(private readonly highlightsService: HighlightsService) {}
 
   @Post()
-  create(@Body() createHighlightDto: CreateHighlightDto) {
-    return this.highlightsService.create(createHighlightDto);
+  async create(@Body() createHighlightDto: CreateHighlightDto) {
+    return await this.highlightsService.create(createHighlightDto);
   }
 
   @Get()

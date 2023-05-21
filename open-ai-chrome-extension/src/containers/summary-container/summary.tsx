@@ -24,11 +24,7 @@ const SummaryContainer = ({}: SummaryContainerProps) => {
     };
   }, []);
 
-  useEffect(() => {
-    sendMessage();
-  }, [summaryEnabled]);
-
-  const sendMessage = () => {
+  const toggleSummaryEnabledInDom = () => {
     chrome.tabs &&
       chrome.tabs.query(
         {
@@ -38,13 +34,14 @@ const SummaryContainer = ({}: SummaryContainerProps) => {
         (tabs) => {
           chrome.tabs.sendMessage(tabs[0].id || 0, {
             type: 'TOGGLE_SUMMARY_ENABLED',
-            summaryEnabled,
+            summaryEnabled: !summaryEnabled,
           });
         }
       );
   };
 
   const handleSummariseToggle = () => {
+    toggleSummaryEnabledInDom();
     toggleSummaryEnabled();
   };
 
@@ -55,7 +52,7 @@ const SummaryContainer = ({}: SummaryContainerProps) => {
           onClick={handleSummariseToggle}
           state={summaryEnabled ? 'active' : 'none'}
         >
-          Enableeee Summarise
+          Enable Summarise
         </Button>
       </div>
       <div className={styles['bottom-container']}></div>
