@@ -57,7 +57,7 @@ export class SummariesService {
     return createdSummary.save();
   }
 
-  async getSummaries(): Promise<Summary[]> {
+  async findAll(): Promise<Summary[]> {
     return this.summaryModel.find().exec();
   }
 }

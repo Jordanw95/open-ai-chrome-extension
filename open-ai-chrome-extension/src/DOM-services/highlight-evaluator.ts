@@ -22,15 +22,14 @@ document.addEventListener('mouseup', async () => {
     const selectedText = window.getSelection()?.toString();
     if (selectedText && summaryEnabled) {
         // Send the selected text to the extension's background script or popup
-        const response = await fetch('http://localhost:3002/highlights', {
+        await fetch('http://localhost:3002/highlights', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ content: selectedText })
         })
-        console.log(response)
-        // chrome.runtime.sendMessage({ type: 'TEXT_SELECTED', text: selectedText });
+        window.alert('Your selection has been summarised.');
     }
 });
 

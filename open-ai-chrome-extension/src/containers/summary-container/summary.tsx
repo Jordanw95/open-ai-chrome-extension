@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styles from './style.module.css';
 import Button from '../../ui/button';
+import Status from '../../ui/status';
+import Text from '../../ui/text';
+import SummariesList from '../../components/summaries-list';
 import { SummaryContext } from '../../context/summary-context/summary-provider';
 
 interface SummaryContainerProps {}
@@ -8,21 +11,6 @@ interface SummaryContainerProps {}
 const SummaryContainer = ({}: SummaryContainerProps) => {
   const { summaryEnabled, toggleSummaryEnabled } =
     React.useContext(SummaryContext);
-
-  useEffect(() => {
-    const messageListener = (request: { type: string; text: string }) => {
-      if (request.type === 'TEXT_SELECTED') {
-        console.log(request.text); // Do something with the selected text
-      }
-    };
-
-    chrome.runtime.onMessage.addListener(messageListener);
-
-    // Cleanup the listener when the component is unmounted
-    return () => {
-      chrome.runtime.onMessage.removeListener(messageListener);
-    };
-  }, []);
 
   const toggleSummaryEnabledInDom = () => {
     chrome.tabs &&
@@ -55,7 +43,13 @@ const SummaryContainer = ({}: SummaryContainerProps) => {
           Enable Summarise
         </Button>
       </div>
-      <div className={styles['bottom-container']}></div>
+      <div className={styles['middle-container']}>
+        <div className={styles['divider']}></div>
+        <Text size="xl">Created Summaries:</Text>
+      </div>
+      <div className={styles['bottom-container']}>
+        <SummariesList></SummariesList>
+      </div>
     </div>
   );
 };

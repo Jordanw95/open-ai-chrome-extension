@@ -4,6 +4,6 @@ export class CreateHighlightDto {
   @IsString()
   @IsNotEmpty()
   @MinLength(10)
-  @MaxLength(500)
+  @MaxLength(1500)
   content: string;
 }

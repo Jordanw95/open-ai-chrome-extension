@@ -1,0 +1,12 @@
+.summaries-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px 24px;
+}
+
+.summary-container{
+    background-color: #555555;
+    padding: 8px;
+    border-radius: 8px;
+}
