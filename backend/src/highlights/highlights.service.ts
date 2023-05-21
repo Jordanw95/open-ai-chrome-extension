@@ -15,9 +15,7 @@ export class HighlightsService {
 
   async create(createHighlightDto: CreateHighlightDto) {
     const createdHighlight = new this.highlightModel(createHighlightDto);
-    const summary = await this.SummariesService.createSummary(
-      createHighlightDto.content,
-    );
+    await this.SummariesService.createSummary(createHighlightDto.content);
     return createdHighlight.save();
   }
 }

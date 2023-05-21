@@ -12,7 +12,6 @@ jest.mock('openai', () => ({
 
 describe('SummariesService', () => {
   let service: SummariesService;
-  let summaryModel;
 
   const mockSummaryModel = function () {
     this.save = jest.fn().mockResolvedValue(this);

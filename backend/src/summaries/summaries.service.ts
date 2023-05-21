@@ -51,13 +51,12 @@ export class SummariesService {
 
   async createSummary(content: string): Promise<Summary> {
     const summary = await this.requestSummary(content);
-    console.log({ summary });
     const summaryDto = await this.validateSummary({ summary });
     const createdSummary = new this.summaryModel(summaryDto);
     return createdSummary.save();
   }
 
   async findAll(): Promise<Summary[]> {
-    return this.summaryModel.find().exec();
+    return this.summaryModel.find().sort({ created_at: -1 }).exec();
   }
 }

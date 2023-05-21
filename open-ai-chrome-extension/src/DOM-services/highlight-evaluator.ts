@@ -1,7 +1,7 @@
 
 import { DOMMessage } from "../types";
  
-// Function called when a new message is received
+// This script is built into content.js and injected into the page
 
 let summaryEnabled = false;
 

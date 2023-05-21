@@ -9,7 +9,6 @@ import { CreateHighlightDto } from './dto/create-highlight.dto';
 describe('HighlightsController', () => {
   let controller: HighlightsController;
 
-  // This will be our mock highlightModel
   const mockHighlightModel = function () {
     this.save = jest.fn().mockResolvedValue(this);
   };
@@ -21,7 +20,6 @@ describe('HighlightsController', () => {
         HighlightsService,
         {
           provide: getModelToken(Highlight.name),
-          // We return a function that constructs our mockHighlightModel
           useValue: mockHighlightModel,
         },
         {
